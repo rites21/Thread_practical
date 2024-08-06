@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
         //with normal
         for(int i = 1; i <= 10000; i++){
-            if(i == 40) {
+//            if(i == 40) {
                 System.out.println("Ritesh");
-            }
+//            }
             Thread t = new Thread(new NumberPrinter(i));
             t.start();
         }
