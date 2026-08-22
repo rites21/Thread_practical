@@ -1,6 +1,16 @@
-package org.example.Employee_max_salary;
+package example.Employee_max_salary;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class  Main {
@@ -16,7 +26,7 @@ public class  Main {
         );
 
         Map<String, Employee> maxSalaryByDept = employees.stream().
-                collect(Collectors.groupingBy(Employee::getDepartment,Collectors.collectingAndThen( Collectors.maxBy(Comparator.comparingInt(Employee::getSalary)),emp->emp.get())));
+                collect(Collectors.toMap(Employee::getDepartment, Function.identity(), BinaryOperator.maxBy(Comparator.comparingInt(Employee::getSalary))));
 
 
 //        for(Map.Entry<String, Employee> me : maxSalaryByDept.entrySet()){
@@ -34,6 +44,49 @@ public class  Main {
         //totyal avg salary
 
 
-        System.out.println(sorted2.toString());
+//        System.out.println(sorted2.toString());
+
+        //print all employees
+        employees.forEach(employee -> System.out.println(employee.getName() + employee.getSalary()));
+        employees.stream().filter(e -> e.getSalary() % 2 == 0).toList();
+        //sort employee by asc and desc
+//        Distinct words starting with #
+        String[] sentences = {"Java is #great and #Java", "I love #Java and #Streams", "#sample #example"};
+        List<String> result = Arrays.stream(sentences)
+                .flatMap(sentence -> Arrays.stream(sentence.split("\\s+")))
+                .filter(word -> word.startsWith("#"))
+                .distinct()
+                .toList();
+
+        result.forEach(System.out::println);
+
+//        3. First repeating character using Streams
+
+        String fs = "asdfaghjklkjhgfdsa";
+        Character res = fs.chars().mapToObj(c->(char)c).collect(Collectors.groupingBy(
+                Function.identity(),
+                LinkedHashMap::new,
+                Collectors.counting()
+        )).entrySet().stream().filter(e->e.getValue() >1).map(Map.Entry::getKey).findFirst().orElse(null);
+        System.out.println(res);
+
+//        class Student {
+//            String name;
+//            List<Integer> marks;
+//
+//            public Student(String rk, int[] ints) {
+//            }
+//            public int getMarks(){
+//                return  0;
+//            }
+//        }
+////        4. Student ranks based on total marks
+//        List<Student> students = new ArrayList<>(
+//                (Collection) new Student("Rk", new int[]{10, 20, 40})
+//        );
+//        int highestMarks = students.stream().collect(Collectors.toMap(
+//                Function.identity(), student -> student.getMarks().stream(). .mapToInt(Integer::intValue)
+//                        .sum()
+//        ));
     }
 }

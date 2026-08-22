@@ -1,4 +1,4 @@
-package org.example.Stream;
+package example.Stream;
 
 import java.security.KeyStore;
 import java.util.*;

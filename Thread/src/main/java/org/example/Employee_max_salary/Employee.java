@@ -1,6 +1,6 @@
-package org.example.Employee_max_salary;
+package example.Employee_max_salary;
 
-class Employee {
+public class Employee {
     private String name;
     private String department;
     private int salary;
