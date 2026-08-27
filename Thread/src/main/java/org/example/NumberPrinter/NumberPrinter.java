@@ -1,4 +1,4 @@
-package org.example.NumberPrinter;
+package example.NumberPrinter;
 
 public class NumberPrinter implements Runnable{
     int numberToPrint;

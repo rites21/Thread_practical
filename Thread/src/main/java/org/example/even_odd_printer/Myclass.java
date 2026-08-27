@@ -1,4 +1,4 @@
-package main.java.org.example.even_odd_printer;
+package example.even_odd_printer;
 
 public class Myclass {
     static int N;

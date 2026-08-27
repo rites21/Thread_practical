@@ -1,4 +1,4 @@
-package org.example.OddEvenPrinterUsingThread;
+package example.OddEvenPrinterUsingThread;
 
 public class GFG {
     // Starting counter
